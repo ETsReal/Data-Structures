@@ -2,11 +2,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-// #include <Node.c> Não se "faz" include de .c's
-
-// O que o gajo (VP) faz é um Node.h
-
-// btw gcc *.c  "compila" os .c todos desta pasta 
 
 typedef struct Node
 {
