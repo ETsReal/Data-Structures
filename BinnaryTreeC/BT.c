@@ -54,6 +54,33 @@ void add(BT* bt, int data){
     }
 }
 
+Node* remove2(Node* current, int data){
+    if(current -> data == data){
+        if(current -> left == NULL && current -> right != NULL){
+            current = current -> right;
+            return current;
+        }
+        else if(current -> right == NULL && current -> left != NULL){
+            current = current -> left;
+            return current;
+        }
+        else if(current -> left == NULL && current -> right == NULL){
+            current = NULL;
+            return current;
+        }
+    }
+    else if(data < current -> data){
+        current -> left = remove2(current -> left, data);
+    }
+    else if(data > current -> data){
+        current -> right = remove2(current -> right, data);
+    }
+}
+
+Node* removeBT(BT* bt, int data){
+    remove2(bt -> root, data);
+}
+
 
 int main(){
     BT* bt = malloc(sizeof(BT));
@@ -61,5 +88,7 @@ int main(){
     add(bt, 4);
     add(bt, 5);
     add(bt, 3);
+    removeBT(bt, 5);
+    add(bt, 5);
     printBT(bt);
 }
