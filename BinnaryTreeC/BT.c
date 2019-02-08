@@ -23,7 +23,9 @@ bool empty(BT* bt){
 void printBT(BT* bt){
     printf("root: %d \n",bt -> root -> data);
     printf("root left: %d \n",bt -> root -> left -> data);
-    printf("root direita: %d \n",bt -> root -> right -> data);
+    printf("root left: %d \n",bt -> root -> left -> left -> data);
+    printf("root left: %d \n",bt -> root -> left -> left -> left -> data);
+    
 }
 
 Node* add2(int data, Node* node){
@@ -81,14 +83,22 @@ Node* removeBT(BT* bt, int data){
     remove2(bt -> root, data);
 }
 
+Node* BTmin(Node* current){
+    while(current -> left != NULL){
+        current = current -> left;
+    }
+    return current;
+}
+
 
 int main(){
     BT* bt = malloc(sizeof(BT));
     bt -> root = NULL;
+    add(bt, 5);
     add(bt, 4);
-    add(bt, 5);
     add(bt, 3);
-    removeBT(bt, 5);
-    add(bt, 5);
+    add(bt, 2);
     printBT(bt);
+    Node* ola =  BTmin(bt -> root);
+    printf("minimo %d \n", ola -> data);
 }
